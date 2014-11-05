@@ -79,7 +79,14 @@ class SortByPatternTest < Minitest::Test
     prices = [3.02, 9.91, 7.9, 10.01, 11.0]
     transformed = []
     prices.each do |price|
-      transformed << [price.to_s.split('.').last]
+      transformed << [(price * 100).to_i.to_s[-2..-1], price ]
+    end
+    transformed = transformed.sort
+    sorted = []
+    transformed.each do |sort_key, price|
+      sorted << price
+    end
+
     assert_equal [11.0, 10.01, 3.02, 7.9, 9.91], sorted
   end
 
