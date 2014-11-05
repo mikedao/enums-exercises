@@ -15,16 +15,14 @@ class ReduceTest < Minitest::Test
   def test_subtract_list_of_numbers
     numbers = [28, 12, 38, 1, 91]
     result = numbers.reduce(0) do |difference, number|
-      # Your code goes here
+      difference -= number
     end
     assert_equal -170, result
   end
 
   def test_multiply_list_of_numbers
-    skip
     numbers = [2, 3, 5, 7]
-    # initial value is 1
-    # Your code goes here
+    result = numbers.reduce(1) { |product, number| product * number }
     assert_equal 210, result
   end
 
@@ -37,26 +35,24 @@ class ReduceTest < Minitest::Test
   end
 
   def test_divide_560_by_a_bunch_of_numbers
-    skip
     numbers = [2, 2, 2, 5, 7]
     # initial value is 560
+    result = numbers.reduce(560) { |dividend, number| dividend / number }
     # Your code goes here
     assert_equal 2, result
   end
 
   def test_subtract_smallest_values_from_100
-    skip
     elements = [[8, 5, 3], [1, 9, 11], [4, 7, 2], [19, 34, 6]]
     # initial value is 100
-    # Your code goes here
+    result = elements.reduce(100) { |difference, element| difference - element.min }
     assert_equal 88, result
   end
 
   def test_add_all_the_second_values_together
-    skip
     elements = [["a", 1], ["b", 9], ["c", 21]]
     # initial value is 0
-    # Your code goes here
+    result = elements.reduce(0) { |sum, element| sum += element[1] }
     assert_equal 31, result
   end
 
