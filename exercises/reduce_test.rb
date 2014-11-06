@@ -27,8 +27,11 @@ class ReduceTest < Minitest::Test
   end
 
   def test_capitalize_keywords_in_phrase_one_fish_two_fish_red_fish_blue_fish
-    skip
+
     keywords = ["fish", "blue"]
+    result = keywords.reduce('one fish two fish red fish blue fish') do |a, b|
+      a.gsub(b,b.upcase)
+    end
     # initial value is 'one fish two fish red fish blue fish'
     # Your code goes here
     assert_equal 'one FISH two FISH red FISH BLUE FISH', result
